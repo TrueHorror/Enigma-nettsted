@@ -1,0 +1,23 @@
+footer{
+	width: 100%;
+	height: auto;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background-color: grey;
+}
+
+p{
+	text-align: center;
+}
+
+main {
+	display: table;
+	text-align: left; 
+}
+
+#admin_login_form{
+	display: table-cell; 
+	text-align: left;	
+	width: 33%;
+}
