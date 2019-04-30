@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<?php include("db_functions.php>"); ?>
 <html>
   <head>
     <title>Page Title</title>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
+    
   	<header>
   		<nav></nav>
   	</header>
   	<main>	
-	  	<form id="admin_login_form" action="admin_panel.php" method="post">
+	  	<form autocomplete="off" id="admin_login_form" action="db_functions.php" method="post">
+        <input autocomplete="false" name="hidden" type="text" style="display:none;">
 	  		<label for="brukernavn">Brukernavn</label><br>
 	  		<input class="admin_input" type="text" name="brukernavn"><br>
 
