@@ -9,3 +9,8 @@ img.oversiktbilde {
   width: 20%;
   object-fit: contain;
 }
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}

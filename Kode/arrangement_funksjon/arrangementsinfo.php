@@ -11,19 +11,35 @@
 
   <?php
   require("testarrangement.php");
+  require("functions.php");
 
   if (ISSET($_GET['arr'])) {
+    $antPaameldte = 0;
 
-    $arrId = $testarrangement[$_GET['arr']];
+    $sqlJoin = "SELECT * FROM Arrangement JOIN Paameldte ON Arrangement.ArrangementsID = Paameldte.ArrangementsID WHERE Arrangement.ArrangementsID = " . $_GET['arr'] . ";";
+    $resultatJoin = mysqli_query($dbTilkobling, $sqlJoin);
 
-    echo "<img src='" . $arrId['bilde'] . " ' width=400 alt'illustrasjonsbilde'/>
-    <h1>" . $arrId['tittel'] . "</h1>
-    <p>" . $arrId['dato'] . " " . $arrId['tid'] . "</p>
-    <p>" . $arrId['antPlasser'] . " ledige plasser</p>
-    <p>" . $arrId['beskrivelse'] . "</p>
-    <a href='https://itstud.hiof.no/~iedahl/uin2019/arrangement_funksjon/paamelding.php?arr=" . $_GET['arr'] . "'>Påmelding</a>";
+    while($row = mysqli_fetch_array($resultatJoin)) {
+      $antPaameldte++;
+    }
+
+    $sql = "SELECT * FROM Arrangement WHERE ArrangementsID = " . $_GET['arr'] . ";";
+    $resultat = mysqli_query($dbTilkobling, $sql);
+
+    while($row = mysqli_fetch_array($resultat)) {
+
+      $arrId = $testarrangement[$_GET['arr']];
+      $ledigePlasser = $row['AntPlasser'] - $antPaameldte;
+
+      echo "<img src='" . $arrId['bilde'] . " ' width=400 alt'illustrasjonsbilde'/>
+      <h1>" . $row['Tittel'] . "</h1>
+      <p>" . $row['Dato'] . " " . $row['Tid'] . "</p>
+      <p>" . $ledigePlasser . " ledige plasser</p>
+      <p>" . $row['Beskrivelse'] . "</p>
+      <a href='https://itstud.hiof.no/~iedahl/uin2019/arrangement_funksjon/paamelding.php?arr=" . $_GET['arr'] . "'>Påmelding</a>";
+    }
   }
-
+  mysqli_close($dbTilkobling);
   ?>
 
 </body>
