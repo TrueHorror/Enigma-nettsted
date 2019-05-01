@@ -6,36 +6,26 @@
   <meta charset="UTF-8"/>
   <link rel="stylesheet" type="text/css" href="arrangement_style.css">
 
-  <!-- <script>
-
-    function delete(){
-
-      var del=confirm("Are you sure you want to delete this record?");
-      if (del==true){
-         alert ("record deleted")
-      }
-      return del;
-
-    }
-   
-  </script> -->
 
 </head>
 
 <body>
   <?php
+  session_start();
+    if(!isset($_SESSION['user'])){
+       header("Location: admin_login.php");
+
+    }
     require("testarrangement.php");
     require("functions.php");
 
-    //må få til en bekreftelse før man sletter et arrangement
     if (ISSET($_GET['arr'])) {
       $sqlPaameldteDelete = "DELETE from Paameldte WHERE ArrangementsID = " . $_GET['arr'] . ";";
       $sqlDelete = "DELETE from Arrangement WHERE ArrangementsID = " . $_GET['arr'] . ";";
 
       mysqli_query($dbTilkobling, $sqlPaameldteDelete);
 
-      /*echo "<script type='text/javascript'>function slett() {
-            if (confirm('Vil du virkelig slette arrangementet?')) {";*/
+      
 
               if(mysqli_query($dbTilkobling, $sqlDelete)) {
                 echo "<h2>Arrangementet er slettet</h2>";
@@ -44,7 +34,7 @@
                 echo mysqli_error($dbTilkobling);
                 echo "<p>Det oppsto en feil, vennligst prøv igjen. " . mysqli_error($dbTilkobling) . "</p>";
               }
-            //echo "} </script>";
+            
     }
 
     echo "<table>

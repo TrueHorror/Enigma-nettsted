@@ -1,6 +1,7 @@
 <?php
 if (isset($_POST['create_member'])) {
 
+
 	require('db_connection.php');
 
 	$epost = $_POST['epost'];
@@ -13,27 +14,27 @@ if (isset($_POST['create_member'])) {
 	$betaling = $_POST['betaling'];
 
 	if (empty($epost) || empty($fornavn) || empty($etternavn) || empty($tlfnr) || empty($avgangsaar)) {
-		header("Location: user_reg.php?error=emptyfields");
+		header("Location: paamelding.php?error=emptyfields");
 		exit();
 	}
 	else if (!filter_var($epost, FILTER_VALIDATE_EMAIL)) {
-		header("Location: user_reg.php?error=emailerror");
+		header("Location: paamelding.php?error=emailerror");
 		exit();
 	}
 	else if (preg_match("/^[a-ZA-Z ]*$/", $fornavn)) {
-		header("Location: user_reg.php?error=fornavnerror");
+		header("Location: paamelding.php?error=fornavnerror");
 		exit();
 	}
 	else if (preg_match("/^[a-ZA-Z ]*$/", $etternavn)) {
-		header("Location: user_reg.php?error=etternavnerror");
+		header("Location: paamelding.php?error=etternavnerror");
 		exit();
 	}
 	else if (preg_match("/^[0-9]{9}*$/", $tlfnr)) {
-		header("Location: user_reg.php?error=tlfnrerror");
+		header("Location: paamelding.php?error=tlfnrerror");
 		exit();
 	}
 	else if (preg_match("/^[0-9]{4}*$/", $avgangsaar)) {
-		header("Location: user_reg.php?error=avgangsaarerror");
+		header("Location: paamelding.php?error=avgangsaarerror");
 		exit();
 	}
 	else {
@@ -43,7 +44,7 @@ if (isset($_POST['create_member'])) {
 		$stmt = mysqli_stmt_init($connection);
 
 		if (!mysqli_stmt_prepare($stmt, $sql)) {
-			header("Location: user_reg.php?error=sqlerror");
+			header("Location: paamelding.php?error=sqlerror");
 			exit();
 		}
 		else {
@@ -54,7 +55,7 @@ if (isset($_POST['create_member'])) {
 			$result = mysqli_stmt_num_rows($stmt);
 
 			if ($result > 0) {
-				header("Location: user_reg.php?error=eposttaken");
+				header("Location: paamelding.php?error=eposttaken");
 				exit();
 			}
 			else {
@@ -73,13 +74,13 @@ if (isset($_POST['create_member'])) {
 
 					mail($to, $subject, $message, $headers);
 
-  					header("Location: add_member.php?newmember=success");
+  					header("Location: paamelding.php?newmember=success");
 					exit();	
 		  		
 	  			}
 	  			else{
 	  			
-	  				header("Location: user_reg.php?error=sqlerror");
+	  				header("Location: paamelding.php?error=sqlerror");
 					exit();
 	  			}
 
@@ -91,7 +92,7 @@ if (isset($_POST['create_member'])) {
 
 }
 else {
-	header("Location: user_reg.php");
+	header("Location: paamelding.php");
 	exit();	
 }
 ?>

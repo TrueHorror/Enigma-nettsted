@@ -10,6 +10,11 @@
 <body>
 
   <?php
+  session_start();
+    if(!isset($_SESSION['user'])){
+       header("Location: admin_login.php");
+
+    }
   require("testarrangement.php");
   require("testpaameldte.php");
   require("functions.php");
@@ -67,7 +72,7 @@
   </table>
 
   <br>
-  <a href='https://itstud.hiof.no/~iedahl/uin2019/arrangement_funksjon/arrangementsoversikt_admin.php'>Tilbake</a>
+  <a href='arrangementsoversikt_admin.php'>Tilbake</a>
 
 </body>
 
