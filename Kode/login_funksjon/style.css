@@ -16,7 +16,7 @@ main {
 	text-align: left; 
 }
 
-#admin_login_form{
+form{
 	display: table-cell; 
 	text-align: left;	
 	width: 33%;

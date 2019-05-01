@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Admin Panel</title>
+    <title>Edit user</title>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
   	<?php
-	  	require('db_conection.php');
+  		session_start();
+		if(!isset($_SESSION['user'])){
+		   header("Location: admin_login.php");
+
+		}
+
+	  	require('db_connection.php');
 		    
 	  	$user = $_GET['user'];
 
@@ -17,6 +23,7 @@
 	  		$etternavn = $_POST['etternavn'];
 	  		$tlfnr = $_POST['tlfnr'];
 	  		$tskjorte = $_POST['tskjorte'];
+	  		$studieprog = $_POST['studieprog'];
 	  		$avgangsaar = $_POST['avgangsaar'];
 	  		$betaling = $_POST['betaling'];
 	  		$bruker_id = $_POST['bruker_id']; 
@@ -24,7 +31,7 @@
 
 
 
-	  		$update_sql = "UPDATE medlemmer SET epost = '" . $epost . "', fornavn = '" . $fornavn . "', etternavn = '" . $etternavn . "', tlfnr = '" . $tlfnr . "', tskjorte = '" . $tskjorte . "', avgangsaar = " . $avgangsaar . ", betaling = '" . $betaling . "' WHERE Bruker_ID =" . $bruker_id . ";";
+	  		$update_sql = "UPDATE medlemmer SET epost = '" . $epost . "', fornavn = '" . $fornavn . "', etternavn = '" . $etternavn . "', tlfnr = '" . $tlfnr . "', tskjorte = '" . $tskjorte . "', studieprog = '" . $studieprog . "', avgangsaar = " . $avgangsaar . ", betaling = '" . $betaling . "' WHERE Bruker_ID =" . $bruker_id . ";";
 	  		
 	  		if (mysqli_query($connection, $update_sql)) {
   				echo "OK";
@@ -101,7 +108,7 @@
 		  					<input class='edit_input' type='text' name='betaling' value='". $row['betaling'] ."'>
 		  				</td>
 		  				<td>
-		  					<input type='submit' name='edit'></input>
+		  					<input type='submit' name='edit' value='Bekreft'></input>
 		  				</td>
 		  				
 		  			</tr>";
@@ -111,8 +118,13 @@
 	    	echo "</table>
 	    	 	</form>";
 	  	}
+
+
     	 	
 	?>
-  	
+  	<a href="admin_panel.php">Avbryt redigering</a>
+  	<footer>
+    	<p>Her skal det være info generell info om Enigma(Kontaktinfo, linker, "smågodt")</p>
+    </footer>
   </body>
 </html>

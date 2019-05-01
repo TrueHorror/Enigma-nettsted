@@ -1,8 +1,12 @@
 <?php
 	$user = $_GET['user'];
 
+	session_start();
+	if(!isset($_SESSION['user'])){
+	   header("Location: admin_login.php");
 
-	require('db_conection.php');
+	}
+	require('db_connection.php');
 
 	$sql = "DELETE FROM medlemmer WHERE epost = '" . $user . "';";
 	$result = mysqli_query($connection, $sql);  

@@ -7,7 +7,12 @@
   <body>
   	<?php
   		session_start();
-  		require('db_conection.php');
+		if(!isset($_SESSION['user'])){
+		   header("Location: admin_login.php");
+
+		}
+
+  		require('db_connection.php');
   		
 
   		$sql = "SELECT * FROM medlemmer;";
@@ -40,13 +45,17 @@
 	  				<td>" . $row['avgangsaar'] . "</td>
 	  				<td>" . $row['betaling'] . "</td>
 	  				<td><a href='edit_user.php?user=" . $row['epost'] . "'>EDIT</a></td>
-	  				<td><a href='delete_user.php?user=" . $row['epost'] . "'>SLETT</a></td>
+	  				<td><a onClick=\"return confirm('Vill du virkelig slette personen?')\" href='delete_user.php?user=" . $row['epost'] . "'>SLETT</a></td>
 
 	  			</tr>";
   	
     	} 
     	 echo "</table>";
 	?>
-  	
+  	<a href="paamelding.php">Legg til bruker</a>
+  	<footer>
+    	<p>Her skal det være info generell info om Enigma(Kontaktinfo, linker, "smågodt")</p>
+    	<a href="logout.php">logg ut</a>
+    </footer>
   </body>
 </html>

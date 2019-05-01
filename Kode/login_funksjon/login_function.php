@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_POST['login_btn'])) {
-  require('db_conection.php');
+  require('db_connection.php');
   
   $username = $_POST['brukernavn'];
   $password = $_POST['passord'];
@@ -35,7 +35,7 @@ if (isset($_POST['login_btn'])) {
         }
           else if ($pwCheck == true) {
             session_start();
-            $_SESSION['userId'] = $row['melk'];
+            $_SESSION['user'] = $row['melk'];
 
 
 
