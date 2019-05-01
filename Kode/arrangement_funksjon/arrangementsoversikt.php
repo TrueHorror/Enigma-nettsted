@@ -12,14 +12,17 @@
     require("testarrangement.php");
     require("functions.php");
 
-    $sql = "SELECT * FROM Arrangement";
+    //$sql = "SELECT * FROM Arrangement JOIN Paameldte ON Arrangement.ArrangementsID = Paameldte.ArrangementsID ORDER BY Dato";
+    $sql = "SELECT *, COUNT(Paameldte.ArrangementsID) FROM Arrangement JOIN Paameldte ON Arrangement.ArrangementsID = Paameldte.ArrangementsID GROUP BY Arrangement.ArrangementsID";
     $resultat = mysqli_query($dbTilkobling, $sql);
 
     while($row = mysqli_fetch_array($resultat)) {
+      $dato = date('j/n/Y', strtotime($row['Dato']));
+
       echo "<div class='arrangementskort'>
         <img class='oversiktbilde' src=" . $testarrangement[$row['ArrangementsID']]['bilde'] . " alt='illustrasjonsbilde'/>
         <h1>" . $row['Tittel'] . "</h1>
-        <p>" . $row['Dato'] . " " . $row['Tid'] . "</p>
+        <p>" . $dato . " " . $row['Tid'] . "</p>
         <p>" . $row['Sted'] . "</p>";
 
         /*$antPaameldte = 0;

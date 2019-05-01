@@ -48,16 +48,19 @@
         <th>Handlinger</th>
       </tr>";
 
-      $sql = "SELECT * FROM Arrangement";
+      $sql = "SELECT * FROM Arrangement ORDER BY Opprettet DESC";
       $resultat = mysqli_query($dbTilkobling, $sql);
 
       while($row = mysqli_fetch_array($resultat)) {
+        $dato = date('j/n/Y', strtotime($row['Dato']));
+        $opprettet = date('j/n/Y H:i', strtotime($row['Opprettet']));
+
         echo "<tr>
           <td><a href='https://itstud.hiof.no/~iedahl/uin2019/arrangement_funksjon/arrangementsinfo_admin.php?arr=" . $row['ArrangementsID'] . "'>" . $row['Tittel'] . "</a></td>
           <td>" . $row['AntPlasser'] . "</td>
-          <td>" . $row['Dato'] . " " . $row['Tid'] . "</td>
+          <td>" . $dato . " " . $row['Tid'] . "</td>
           <td>" . $row['Sted'] . "</td>
-          <td>" . $row['Opprettet'] . "</td>
+          <td>" . $opprettet . "</td>
           <td><a id='slett' href='https://itstud.hiof.no/~iedahl/uin2019/arrangement_funksjon/arrangementsoversikt_admin.php?arr=" . $row['ArrangementsID'] . "'>Slett</a> <a href='https://itstud.hiof.no/~iedahl/uin2019/arrangement_funksjon/nyttarrangement.php?arr=" . $row['ArrangementsID'] . "'>Rediger</a></td>
         </tr>";
       }

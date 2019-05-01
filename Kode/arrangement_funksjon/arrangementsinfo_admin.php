@@ -33,9 +33,13 @@
 
       $ledigePlasser = $row['AntPlasser'] - $antPaameldte;
 
+      $dato = date('j/n/Y', strtotime($row['Dato']));
+      $opprettet = date('j/n/Y H:i', strtotime($row['Opprettet']));
+
       echo "<img src='" . $arrId['bilde'] . " ' width=400 alt'illustrasjonsbilde'/>
       <h1>" . $row['Tittel'] . "</h1>
-      <p>" . $row['Dato'] . " " . $row['Tid'] . "</p>
+      <p>Opprettet: " . $opprettet . "</p>
+      <p>Dato: " . $dato . " " . $row['Tid'] . "</p>
       <p>" . $ledigePlasser . " ledige plasser</p>
       <p>" . $row['Beskrivelse'] . "</p><br>
       <p><strong>Antall påmeldte: " . $antPaameldte . " totalt</strong></p>
