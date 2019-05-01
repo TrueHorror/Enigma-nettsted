@@ -11,7 +11,7 @@
   <?php
   session_start();
     if(!isset($_SESSION['user'])){
-       header("Location: admin_login.php");
+       header("Location: ../login_funksjon/admin_login.php");
 
     }
 
