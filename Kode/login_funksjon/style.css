@@ -16,8 +16,18 @@ main {
 	text-align: left; 
 }
 
-#admin_login_form{
+form{
 	display: table-cell; 
 	text-align: left;	
 	width: 33%;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+td, th {
+	padding-left: 10px;
+	padding-right: 10px;
 }

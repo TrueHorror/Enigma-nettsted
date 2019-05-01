@@ -29,7 +29,7 @@
 
       if(mysqli_query($dbTilkobling, $sql)) {
         echo "<h2>" . $tittel . " er lagt til</h2>
-        <a href='https://itstud.hiof.no/~iedahl/uin2019/arrangement_funksjon/arrangementsoversikt_admin.php'>Til arrangementsoversikt</a>";
+        <a href='arrangementsoversikt_admin.php'>Til arrangementsoversikt</a>";
       }
       else {
         echo "<p>Det oppsto en feil, vennligst prøv igjen.</p>";
@@ -51,7 +51,7 @@
 
       if(mysqli_query($dbTilkobling, $sql)) {
         echo "<h2>" . $tittel . " er oppdatert</h2>
-        <a href='https://itstud.hiof.no/~iedahl/uin2019/arrangement_funksjon/arrangementsoversikt_admin.php'>Til arrangementsoversikt</a>";
+        <a href='arrangementsoversikt_admin.php'>Til arrangementsoversikt</a>";
       }
       else {
         echo "<p>Det oppsto en feil, vennligst prøv igjen.</p>";
@@ -117,7 +117,7 @@
               echo "</select><br><br>
               <input type='submit' name='lagreRediger' value='Lagre'/>
             </form>
-            <a href='https://itstud.hiof.no/~iedahl/uin2019/arrangement_funksjon/arrangementsoversikt_admin.php'>Avbryt</a>";
+            <a href='arrangementsoversikt_admin.php'>Avbryt</a>";
         }
       }
 
@@ -166,7 +166,7 @@
           </p>
           <input type='submit' name='lagreNytt' value='Lagre'/>
         </form>
-        <a href='https://itstud.hiof.no/~iedahl/uin2019/arrangement_funksjon/arrangementsoversikt_admin.php'>Avbryt</a>";
+        <a href='arrangementsoversikt_admin.php'>Avbryt</a>";
       }
     }
 

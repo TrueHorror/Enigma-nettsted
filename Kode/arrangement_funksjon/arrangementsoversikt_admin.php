@@ -6,15 +6,19 @@
   <meta charset="UTF-8"/>
   <link rel="stylesheet" type="text/css" href="arrangement_style.css">
 
-  <!--script>
-    $( document ).ready(function() {
-      $( "#slett" ).click(function() {
-        if (confirm('Vil du virkelig slette arrangementet?')) {
-          window.location.href = "http://www.google.com";
-        }
-      });
-    });
-  </script-->
+  <!-- <script>
+
+    function delete(){
+
+      var del=confirm("Are you sure you want to delete this record?");
+      if (del==true){
+         alert ("record deleted")
+      }
+      return del;
+
+    }
+   
+  </script> -->
 
 </head>
 
@@ -25,7 +29,11 @@
 
     //må få til en bekreftelse før man sletter et arrangement
     if (ISSET($_GET['arr'])) {
+      $sqlPaameldteDelete = "DELETE from Paameldte WHERE ArrangementsID = " . $_GET['arr'] . ";";
       $sqlDelete = "DELETE from Arrangement WHERE ArrangementsID = " . $_GET['arr'] . ";";
+
+      mysqli_query($dbTilkobling, $sqlPaameldteDelete);
+
       /*echo "<script type='text/javascript'>function slett() {
             if (confirm('Vil du virkelig slette arrangementet?')) {";*/
 
@@ -33,7 +41,8 @@
                 echo "<h2>Arrangementet er slettet</h2>";
               }
               else {
-                echo "<p>Det oppsto en feil, vennligst prøv igjen.</p>";
+                echo mysqli_error($dbTilkobling);
+                echo "<p>Det oppsto en feil, vennligst prøv igjen. " . mysqli_error($dbTilkobling) . "</p>";
               }
             //echo "} </script>";
     }
@@ -56,12 +65,13 @@
         $opprettet = date('j/n/Y H:i', strtotime($row['Opprettet']));
 
         echo "<tr>
-          <td><a href='https://itstud.hiof.no/~iedahl/uin2019/arrangement_funksjon/arrangementsinfo_admin.php?arr=" . $row['ArrangementsID'] . "'>" . $row['Tittel'] . "</a></td>
+          <td><a href='arrangementsinfo_admin.php?arr=" . $row['ArrangementsID'] . "'>" . $row['Tittel'] . "</a></td>
           <td>" . $row['AntPlasser'] . "</td>
           <td>" . $dato . " " . $row['Tid'] . "</td>
           <td>" . $row['Sted'] . "</td>
-          <td>" . $opprettet . "</td>
-          <td><a id='slett' href='https://itstud.hiof.no/~iedahl/uin2019/arrangement_funksjon/arrangementsoversikt_admin.php?arr=" . $row['ArrangementsID'] . "'>Slett</a> <a href='https://itstud.hiof.no/~iedahl/uin2019/arrangement_funksjon/nyttarrangement.php?arr=" . $row['ArrangementsID'] . "'>Rediger</a></td>
+          <td>" . $row['Opprettet'] . "</td>
+          <td><a onClick=\"return confirm('Vill du virkelig slette arrangementet?')\" id='slett' href='arrangementsoversikt_admin.php?arr=" . $row['ArrangementsID'] . "'>Slett</a> 
+              <a  href='nyttarrangement.php?arr=" . $row['ArrangementsID'] . "'>Rediger</a></td>
         </tr>";
       }
 
@@ -70,7 +80,7 @@
     mysqli_close($dbTilkobling);
    ?>
    <br>
-   <a href="https://itstud.hiof.no/~iedahl/uin2019/arrangement_funksjon/nyttarrangement.php">Opprett nytt arrangement</a>
+   <a href="nyttarrangement.php">Opprett nytt arrangement</a>
 
 </body>
 
