@@ -9,6 +9,11 @@
 
 <body>
   <?php
+  session_start();
+    if(!isset($_SESSION['user'])){
+       header("Location: admin_login.php");
+
+    }
 
     require("testarrangement.php");
     require("functions.php");

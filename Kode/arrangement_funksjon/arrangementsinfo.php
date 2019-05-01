@@ -36,7 +36,7 @@
       <p>" . $row['Dato'] . " " . $row['Tid'] . "</p>
       <p>" . $ledigePlasser . " ledige plasser</p>
       <p>" . $row['Beskrivelse'] . "</p>
-      <a href='https://itstud.hiof.no/~iedahl/uin2019/arrangement_funksjon/paamelding.php?arr=" . $_GET['arr'] . "'>Påmelding</a>";
+      <a href='paamelding.php?arr=" . $_GET['arr'] . "'>Påmelding</a>";
     }
   }
   mysqli_close($dbTilkobling);

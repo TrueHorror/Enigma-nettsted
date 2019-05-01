@@ -53,6 +53,9 @@
     	 echo "</table>";
 	?>
   	<a href="paamelding.php">Legg til bruker</a>
+  	<a href="../arrangement_funksjon/arrangementsoversikt_admin.php">Arrangementoversikt</a>
+  	<a href="../arrangement_funksjon/arrangementsinfo_admin.php">Arrangementinfo</a>
+  	<a href="../arrangement_funksjon/nyttarrangement.php">Legg til nytt arrangement</a>
   	<footer>
     	<p>Her skal det være info generell info om Enigma(Kontaktinfo, linker, "smågodt")</p>
     	<a href="logout.php">logg ut</a>
