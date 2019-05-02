@@ -3,16 +3,16 @@
 
 	session_start();
 	if(!isset($_SESSION['user'])){
-	   header("Location: admin_login.php");
+	   header("Location: admin-login.php");
 
 	}
-	require('db_connection.php');
+	require('db-connection.php');
 
 	$sql = "DELETE FROM medlemmer WHERE epost = '" . $user . "';";
 	$result = mysqli_query($connection, $sql);  
 
 	if ($result) {
-	    header('Location: admin_panel.php');
+	    header('Location: admin-panel.php');
 	    exit();
 
 	} else {

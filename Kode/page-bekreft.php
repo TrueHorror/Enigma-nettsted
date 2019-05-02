@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html>
+<?php
+/* Template Name: Bekreft */
+?>
+<?php
+get_header();
+?>
 
-<head>
-  <title>Min side</title>
-  <meta charset="UTF-8"/>
-  <link rel="stylesheet" type="text/css" href="arrangement_style.css">
-
-</head>
-
-<body>
+<div id="primary" class="content-area">
+	<main id="main" class="site-main" role="main">
 
 
   <?php
-    require("testarrangement.php");
-    require("functions.php");
+    require("arr_functions.php");
 
     if(ISSET($_POST['submit'])) {
 
@@ -28,7 +25,7 @@
 
       while($row = mysqli_fetch_array($resultat)) {
         echo "<h1>Bekreft påmelding</h1>
-          <form method='post' action='bekreft.php'>
+          <form method='post' action=''>
           <input type='hidden' name='arrId' value='" . $arrId . "'>
           <input type='hidden' name='tittel' value='" . $row['Tittel'] . "'>
           <input type='hidden' name='navn' value='" . $navn . "'>
@@ -60,9 +57,23 @@
       $sql = "INSERT INTO Paameldte(ArrangementsID, Epost, Navn, ErMedlem, Kommentar) VALUES (" . $arrId . ",'" . $epost . "','" . $navn . "', " . $erMedlem . ",'" . $kommentar . "');";
 
       if(mysqli_query($dbTilkobling, $sql)) {
-        echo "<h2>Du er påmeldt " . $tittel . "</h2>
-        <p>En bekreftelse har blitt sendt til din e-post: " . $epost . ".</p>
-        <a href='https://itstud.hiof.no/~iedahl/uin2019/arrangement_funksjon/arrangementsoversikt.php'>Til forsiden</a>";
+        echo "<h2>Du er påmeldt " . lcfirst($tittel) . "</h2>
+              <p>En bekreftelse har blitt sendt til din e-post: " . $epost . ".</p>";
+
+
+              $to = $epost;
+              $subject = "Bekreftelse for påmeldt arrangement";
+              $message = "Hei og takk for påmelding!" . "\r\n
+                          Du har meldt deg på " . lcfirst($tittel) . ".\r\n
+                          Hilsen Enigma";
+              $headers =  "From: enigma@hiof.no" . "\r\n" .
+                          "Reply-To: enigma@hiof.no" . "\r\n" .
+                          "X-Mailer: PHP/" . phpversion();
+
+              mail($to, $subject, $message, $headers);
+
+        echo "<a href='" . site_url() . "/arrangementsoversikt'>Til forsiden</a>";
+
       }
       else {
         echo "<p>Det oppsto en feil, vennligst prøv igjen.</p>";
@@ -71,6 +82,11 @@
     mysqli_close($dbTilkobling);
   ?>
 
-</body>
+</main><!-- .site-main -->
 
-</html>
+<?php get_sidebar( 'content-bottom' ); ?>
+
+</div><!-- .content-area -->
+
+<?php get_sidebar(); ?>
+<?php get_footer(); ?>

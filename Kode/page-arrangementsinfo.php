@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html>
+<?php
+/* Template Name: Arrangementsinfo */
+?>
+<?php
+get_header();
+?>
 
-<head>
-  <title>Arrangementsinfo</title>
-  <meta charset="UTF-8"/>
-  <link rel="stylesheet" type="text/css" href="arrangement_style.css">
-</head>
-
-<body>
+<div id="primary" class="content-area">
+	<main id="main" class="site-main" role="main">
 
   <?php
-  require("testarrangement.php");
-  require("functions.php");
+  require("arr_functions.php");
 
   if (ISSET($_GET['arr'])) {
     $antPaameldte = 0;
@@ -30,18 +28,23 @@
 
       $arrId = $testarrangement[$_GET['arr']];
       $ledigePlasser = $row['AntPlasser'] - $antPaameldte;
+			$dato = date('j/n/Y', strtotime($row['Dato']));
 
-      echo "<img src='" . $arrId['bilde'] . " ' width=400 alt'illustrasjonsbilde'/>
-      <h1>" . $row['Tittel'] . "</h1>
-      <p>" . $row['Dato'] . " " . $row['Tid'] . "</p>
+      echo "<h1>" . $row['Tittel'] . "</h1>
+      <p>" . $dato . " " . $row['Tid'] . "</p>
       <p>" . $ledigePlasser . " ledige plasser</p>
       <p>" . $row['Beskrivelse'] . "</p>
-      <a href='paamelding.php?arr=" . $_GET['arr'] . "'>Påmelding</a>";
+      <a href='" . site_url() . "/paamelding?arr=" . $_GET['arr'] . "' class='knapp'>Påmelding</a>";
     }
   }
   mysqli_close($dbTilkobling);
   ?>
 
-</body>
+</main><!-- .site-main -->
 
-</html>
+<?php get_sidebar( 'content-bottom' ); ?>
+
+</div><!-- .content-area -->
+
+<?php get_sidebar(); ?>
+<?php get_footer(); ?>

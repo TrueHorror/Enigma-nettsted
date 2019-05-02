@@ -1,8 +1,12 @@
 <?php
+/* Template Name: add-member */
+?>
+<?php
+
 if (isset($_POST['create_member'])) {
 
 
-	require('db_connection.php');
+	require('db-connection.php');
 
 	$epost = $_POST['epost'];
 	$fornavn = $_POST['fornavn'];

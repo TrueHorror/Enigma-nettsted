@@ -1,13 +1,13 @@
 <?php
 
 if (isset($_POST['login_btn'])) {
-  require('db_connection.php');
-  
+  require('db-connection.php');
+  S
   $username = $_POST['brukernavn'];
   $password = $_POST['passord'];
 
   if (empty($username) || empty($password) ) {
-    header("Location: admin_login.php?error=emptyfields");
+    header("Location: " . site_url() . "../page-admin-login.php?error=emptyfields");
     exit();
   }
   else {
@@ -16,7 +16,7 @@ if (isset($_POST['login_btn'])) {
     $statement = mysqli_stmt_init($connection);
 
     if (!mysqli_stmt_prepare($statement, $sql)) {
-      header("Location: admin_login.php?error=sqlerror");
+      header("Location: page-admin-login.php?error=sqlerror");
       exit();
     }
     else {
@@ -29,7 +29,7 @@ if (isset($_POST['login_btn'])) {
         $pwCheck = password_verify($password, $row['potetgull']);
         
         if ($pwCheck == false) {
-          header("Location: admin_login.php?error=wrongpassword");
+          header("Location: page-admin-login.php?error=wrongpassword");
           exit();
 
         }
@@ -39,13 +39,13 @@ if (isset($_POST['login_btn'])) {
 
 
 
-            header("Location: admin_panel.php");
+            header("Location: page-admin-panel.php");
             exit();
 
           }
         
         else {
-          header("Location: admin_login.php?error=wrongpassword");
+          header("Location: page-admin-login.php?error=wrongpassword");
           exit();
         }
 
@@ -53,7 +53,7 @@ if (isset($_POST['login_btn'])) {
 
       }
       else {
-        header("Location: admin_login.php?error=nouser");
+        header("Location: page-admin-login.php?error=nouser");
         exit();
 
       }
