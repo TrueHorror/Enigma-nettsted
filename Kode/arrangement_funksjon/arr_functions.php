@@ -21,4 +21,22 @@
       return date('Y-m-d', strtotime($dato));
     }
 
+    function arrfarge($arrType) {
+     if ($arrType == "BedPres") {
+        return "bedpres";
+      }
+      else if ($arrType == "For") {
+        return "for";
+      }
+      else if ($arrType == "LAN") {
+        return "lan";
+      }
+      else if ($arrType == "Sos") {
+        return "sos";
+      }
+      else {
+        return "andre";
+      }
+    }
+
 ?>

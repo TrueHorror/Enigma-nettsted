@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html>
+<?php
+/* Template Name: Arrangmentsinfo_admin */
+?>
+<?php
+get_header();
+?>
 
-<head>
-  <title>Min side</title>
-  <meta charset="UTF-8"/>
-  <link rel="stylesheet" type="text/css" href="arrangement_style.css">
-</head>
-
-<body>
+<div id="primary" class="content-area">
+	<main id="main" class="site-main" role="main">
 
   <?php
   session_start();
@@ -15,9 +14,7 @@
        header("Location: admin_login.php");
 
     }
-  require("testarrangement.php");
-  require("testpaameldte.php");
-  require("functions.php");
+  require("arr_functions.php");
 
   if (ISSET($_GET['arr'])) {
     $antPaameldte = 0;
@@ -41,8 +38,7 @@
       $dato = date('j/n/Y', strtotime($row['Dato']));
       $opprettet = date('j/n/Y H:i', strtotime($row['Opprettet']));
 
-      echo "<img src='" . $arrId['bilde'] . " ' width=400 alt'illustrasjonsbilde'/>
-      <h1>" . $row['Tittel'] . "</h1>
+      echo "<h1>" . $row['Tittel'] . "</h1>
       <p>Opprettet: " . $opprettet . "</p>
       <p>Dato: " . $dato . " " . $row['Tid'] . "</p>
       <p>" . $ledigePlasser . " ledige plasser</p>
@@ -72,8 +68,13 @@
   </table>
 
   <br>
-  <a href='arrangementsoversikt_admin.php'>Tilbake</a>
+  <a href='<?php echo site_url(); ?>/arrangementsoversikt-admin'>Tilbake</a>
 
-</body>
+</main><!-- .site-main -->
 
-</html>
+<?php get_sidebar( 'content-bottom' ); ?>
+
+</div><!-- .content-area -->
+
+<?php get_sidebar(); ?>
+<?php get_footer(); ?>

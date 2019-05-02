@@ -1,0 +1,369 @@
+/*
+ Theme Name:   Twenty Sixteen Child
+ Description:  Twenty Fifteen Child Theme
+ Author:       Ingrid Elise Dahl, Fredrik Olsvold
+ Template:     twentysixteen
+ Version:      1.0.0
+ Text Domain:  enigma
+*/
+@media screen and (min-width: 56.875em) .no-sidebar .entry-header,
+	.no-sidebar .entry-content,
+	.no-sidebar .entry-summary,
+	.no-sidebar .entry-footer,
+	.no-sidebar .comments-area,
+	.no-sidebar .image-navigation,
+	.no-sidebar .post-navigation,
+	.no-sidebar .pagination,
+	.no-sidebar .page-header,
+	.no-sidebar .page-content,
+	.no-sidebar .content-bottom-widgets {
+	margin-right: 0 !important;
+	margin-left: 0 !important;
+}
+
+.site {
+	margin: 0 auto !important;
+}
+
+html {
+	margin-top: 0 !important;
+}
+
+body:not(.custom-background-image).admin-bar:before {
+	top: 0px !important;
+}
+
+body:not(.custom-background-image):after {
+	height: 0px !important;
+}
+
+body {
+	padding-left: 100px;
+	padding-right: 100px;
+	background-image: url(Bilder/escheresque.png);
+	background-repeat: repeat;
+}
+
+@media screen and (min-width: 56.875em) .no-sidebar .entry-header,
+	.no-sidebar .entry-content,
+	.no-sidebar .entry-summary,
+	.no-sidebar .entry-footer,
+	.no-sidebar .comments-area,
+	.no-sidebar .image-navigation,
+	.no-sidebar .post-navigation,
+	.no-sidebar .pagination,
+	.no-sidebar .page-header,
+	.no-sidebar .page-content,
+	.no-sidebar .content-bottom-widgets {
+	margin-right: 0 !important;
+	margin-left: 0 !important;
+}
+
+.custom-logo {
+	max-width: 65%;
+}
+
+@media screen and (min-width: 1240px) {
+	.custom-logo {
+		max-width: 50%;
+	}
+}
+
+@media screen and (min-width: 61.5625em) .site-header {
+	padding: 0;
+}
+
+@media screen and (min-width: 44.375em) .site-header {
+	padding: 0;
+}
+
+.site-header {
+	padding-top: 1.5em;
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+	padding-bottom: 3.5em;
+}
+
+.intro {
+	grid-area: intro;
+	padding-left: 50px;
+}
+
+.introbilde {
+	grid-area: bilde;
+}
+
+.arrangementer-forside {
+	grid-area: arrangementer;
+}
+
+.facebook {
+	grid-area: facebook;
+	width: 100%;
+}
+
+.facebook img {
+	width: 100%;
+}
+
+.medlem {
+	grid-area: medlem;
+	width: 100%;
+}
+
+.medlem img {
+	width: 100%;
+}
+
+.hiof {
+	grid-area: hiof;
+	width: 100%;
+}
+
+.hiof img {
+	width: 100%;
+}
+
+.makerspace {
+	grid-area: makerspace;
+	width: 100%;
+}
+
+.makerspace img {
+	width: 100%;
+}
+
+.grid-container {
+	display: grid;
+	grid-row-gap: 50px;
+	grid-column-gap: 5px;
+	grid-template-columns: 25% 25% 25% 25%;
+	grid-template-areas:
+		"bilde intro intro intro"
+		"arrangementer arrangementer arrangementer arrangementer"
+		"facebook makerspace hiof medlem";
+}
+
+.ettArrangement {
+	border-left: 6px solid black;
+	background-color: lightgrey;
+	margin-bottom: 5px;
+	padding: 5px 5px 5px 20px;
+}
+a.table-button {
+	background: #1a1a1a;
+	border: 0;
+	border-radius: 2px;
+	color: #fff;
+	font-family: Montserrat, "Helvetica Neue", sans-serif;
+	font-weight: 700;
+	letter-spacing: 0.046875em;
+	line-height: 1;
+	padding: 5px;
+	text-transform: uppercase;
+}
+
+a:hover.table-button {
+	background: #016d01;
+	border: 0;
+	border-radius: 2px;
+	color: #fff;
+	font-family: Montserrat, "Helvetica Neue", sans-serif;
+	font-weight: 700;
+	letter-spacing: 0.046875em;
+	line-height: 1;
+	padding: 5px;
+	text-transform: uppercase;
+}
+
+p {
+	text-align: left;
+}
+
+.understrek {
+	text-decoration: underline;
+}
+
+.avbrytlink {
+	float: right;
+}
+
+main {
+	/*display: table;*/
+	text-align: left;
+	width: 100% !important;
+}
+
+form {
+	display: table-cell;
+	text-align: left;
+	width: 100%;
+}
+
+/*table,
+th,
+td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+td,
+th {
+	padding-left: 10px;
+	padding-right: 10px;
+}*/
+
+div.arrangementskort {
+	border-left: 8px solid green;
+	overflow: hidden;
+	margin: 10px;
+	padding: 15px;
+	background-color: #d6d6d6;
+	width: 90%;
+}
+
+#bedpres {
+	border-color: #38893d;
+}
+
+#for {
+	border-color: #822e2e;
+}
+
+#sos {
+	border-color: #c97f3a;
+}
+
+#lan {
+	border-color: #2e4782;
+}
+
+#andre {
+	border-color: #5539b2;
+}
+
+div.admin-links {
+	margin-bottom: 15px;
+}
+
+div.admin-links a,
+.opprett, .knapp {
+	background: #1a1a1a;
+	border: 0;
+	border-radius: 2px;
+	color: #fff;
+	font-family: Montserrat, "Helvetica Neue", sans-serif;
+	font-weight: 700;
+	letter-spacing: 0.046875em;
+	line-height: 1;
+	padding: 0.84375em 0.875em 0.78125em;
+	text-transform: uppercase;
+}
+
+img.oversiktbilde {
+	float: right;
+	width: 20%;
+	object-fit: contain;
+}
+
+div.arrangementskort a,
+.admin-links a {
+	background: #1a1a1a;
+	border: 0;
+	border-radius: 2px;
+	color: #fff;
+	font-family: Montserrat, "Helvetica Neue", sans-serif;
+	font-weight: 700;
+	letter-spacing: 0.046875em;
+	line-height: 1;
+	padding: 0.84375em 0.875em 0.78125em;
+	text-transform: uppercase;
+}
+
+div.arrangementskort a:hover,
+.admin-links a:hover {
+	background: #016d01;
+	border: 0;
+	border-radius: 2px;
+	color: #fff;
+	font-family: Montserrat, "Helvetica Neue", sans-serif;
+	font-weight: 700;
+	letter-spacing: 0.046875em;
+	line-height: 1;
+	padding: 0.84375em 0.875em 0.78125em;
+	text-transform: uppercase;
+}
+
+div.arrangementskort a,
+.admin-links a {
+	background: #1a1a1a;
+	border: 0;
+	border-radius: 2px;
+	color: #fff;
+	font-family: Montserrat, "Helvetica Neue", sans-serif;
+	font-weight: 700;
+	letter-spacing: 0.046875em;
+	line-height: 1;
+	padding: 0.84375em 0.875em 0.78125em;
+	text-transform: uppercase;
+}
+
+div.arrangementskort a:hover,
+.admin-links a:hover {
+	background: #016d01;
+	border: 0;
+	border-radius: 2px;
+	color: #fff;
+	font-family: Montserrat, "Helvetica Neue", sans-serif;
+	font-weight: 700;
+	letter-spacing: 0.046875em;
+	line-height: 1;
+	padding: 0.84375em 0.875em 0.78125em;
+	text-transform: uppercase;
+}
+table.medlemmer,
+.arrangementer {
+	table-layout: fixed;
+	width: 100%;
+	text-align: left;
+	border-collapse: collapse;
+}
+table.medlemmer td,
+table.medlemmer,
+.arrangementer {
+	border: 1px solid #000000;
+	padding: 5px 4px;
+}
+table.medlemmer tbody td,
+.arrangementer tbody td {
+	font-size: 11px;
+}
+table.medlemmer thead,
+.arrangementer thead {
+	background: #afd6b6;
+}
+table.medlemmer thead th,
+.arrangementer thead th {
+	border: none;
+	font-size: 15px;
+	font-weight: bold;
+	color: #000000;
+	text-align: left;
+	border-left: 0px solid #d0e4f5;
+}
+table.medlemmer thead th:first-child,
+.arrangementer thead th:first-child {
+	border-left: none;
+}
+
+table.medlemmer tfoot,
+.arrangementer tfoot {
+	font-size: 14px;
+	font-weight: bold;
+	color: #000000;
+	border-top: 3px solid #000000;
+}
+table.medlemmer tfoot td,
+.arrangementer tfoot td {
+	font-size: 14px;
+}
